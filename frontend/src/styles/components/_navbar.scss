@@ -1,0 +1,99 @@
+nav {
+    height: 100vh;
+    overflow-y: hidden;
+    flex: 1;
+    background-color: $primary-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 94px;
+    min-width: 62px;
+
+    img {
+        width: 40px;
+        height: 40px;
+        margin-top: 40px;
+        cursor: pointer;
+    }
+
+    .nav-btn-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 25vh;
+        width: 100%;
+        padding: 10px 0;
+
+        .nav-btn {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .items.select {
+            &::before {
+                position: absolute;
+                content: '';
+                left: 0;
+                background-color: $theme-color;
+                width: 6px;
+                height: 60px;
+            }
+        }
+
+        .history.select {
+            &::before {
+                position: absolute;
+                content: '';
+                left: 0;
+                background-color: $theme-color;
+                width: 6px;
+                height: 60px;
+            }
+        }
+
+        .stats.select {
+            &::before {
+                position: absolute;
+                content: '';
+                left: 0;
+                background-color: $theme-color;
+                width: 6px;
+                height: 60px;
+            }
+        }
+    }
+
+    .shopping-list-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+        background-color: $theme-color;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        cursor: pointer;
+        position: relative;
+
+        .item-amount {
+            position: absolute;
+            color: $primary-color;
+            background-color: $item-amount-bgcolor;
+            border-radius: 4px;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            top: -5px;
+            right: -5px;
+        }
+    }
+}

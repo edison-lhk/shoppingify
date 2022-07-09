@@ -1,0 +1,17 @@
+.item-group {
+    margin: 50px auto;
+
+    h3 {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .item-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px 20px;
+        margin-top: 25px;
+        @import "itemcard";
+    }
+}
+

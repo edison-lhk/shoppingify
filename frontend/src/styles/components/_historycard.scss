@@ -1,0 +1,66 @@
+.history-card-container {
+    background: #FFFFFF;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 63.5px;
+    padding: 0 20px;
+    
+    .history-name {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .history-description-container {
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+
+        .history-date-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0 10px;
+
+            .date-icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+    
+            .history-date {
+                font-weight: 500;
+                font-size: 13px;
+                line-height: 15px;
+                color: #C1C1C4;
+            }
+        }
+
+        .history-status {
+            border: 1px solid #56CCF2;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 76px;
+            height: 25px;
+            background-color: transparent;
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 15px;
+            color: #56CCF2;
+        }
+
+        .go-to-history-details-btn {
+            all: unset;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+    }
+}

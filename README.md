@@ -1,0 +1,5 @@
+<h1 align="center">Shoppingify 🛒</h1>
+
+## Language and Tools:
+
+<img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript Badge" style="padding-right: 10px;"> <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white" alt="SASS Badge" style="padding-right: 10px;"> <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React Badge" style="padding-right: 10px;"> <img src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white" alt="Redux Badge" style="padding-right: 10px;"> <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="NodeJS Badge" style="padding-right: 10px;"> <img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge" alt="Express Badge" style="padding-right: 10px;"> <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB Badge" style="padding-right: 10px;">

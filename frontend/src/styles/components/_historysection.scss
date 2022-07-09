@@ -1,0 +1,42 @@
+.history-section {
+    flex: 10;
+    display: flex;
+
+    .history-list-container {
+        overflow-y: scroll;
+        background-color: $section-bgcolor;
+        padding: 0 min(80px, 5vw);
+        max-height: 100vh;
+        flex: 1;
+
+        @include screen-control(450px) {
+            width: calc(100vw - 62px);
+        }
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        header {
+
+            h1 {
+                font-size: 26px;
+                font-weight: 500;
+                margin-top: 40px;
+                max-width: 450px;
+            }
+
+        }
+
+        .history-group-container {
+            margin-top: 40px;
+            position: relative;
+            min-height: 75vh;
+
+            @import "../components/loading";
+            @import "historygroup";
+        }
+    }
+
+    @import 'itemdetails';
+}

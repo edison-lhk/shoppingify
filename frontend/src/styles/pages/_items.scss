@@ -1,0 +1,7 @@
+.items-page-container {
+    display: flex;
+    
+    @import "../components/navbar";
+    @import "../components/itemsection";
+    @import "../components/shoppinglist";
+}

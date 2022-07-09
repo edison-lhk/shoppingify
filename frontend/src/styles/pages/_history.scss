@@ -1,0 +1,7 @@
+.history-page-container {
+    display: flex;
+
+    @import "../components/navbar";
+    @import "../components/historysection";
+    @import "../components/shoppinglist";
+}

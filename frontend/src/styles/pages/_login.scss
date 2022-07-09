@@ -1,0 +1,101 @@
+.login-page-container {
+    min-height: 100vh;
+    background-color: $section-bgcolor;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include screen-control(460px) {
+        background-color: $shopping-list-bgcolor;
+    }
+
+    .login-form-container {
+        border: 1px solid #C1C1C4;
+        border-radius: 24px;
+        width: Min(410px, 80vw);
+        padding: 40px;
+        background-color: $shopping-list-bgcolor;
+
+        @include screen-control(460px) {
+            border: none;
+            width: 100vw;
+        }
+
+        header {
+            background-color: $add-item-box-bgcolor;
+            border-radius: 24px;
+            position: relative;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .app-logo {
+                position: absolute;
+                left: 10px;
+                top: -20px;
+            }
+
+            .app-name {
+                color: $primary-color;
+                font-size: 26px;
+            }
+
+            .wine {
+                position: absolute;
+                right: 5px;
+                bottom: -40px;
+            }
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            margin: 30px auto;
+            gap: 20px;
+
+            .input-container {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+
+                input {
+                    padding: 0 20px;
+                    height: 50px;
+                    border: 2px solid #C1C1C4;
+                    border-radius: 10px;
+                    outline: none;
+                    font-size: 16px;
+                    transition: border 0.05s ease-in-out;
+
+                    &:focus {
+                        border: 2px solid $theme-color;
+                    }
+                }
+            }
+
+            button {
+                border: none;
+                border-radius: 10px;
+                background-color: $add-item-box-bgcolor;
+                color: $primary-color;
+                height: 38px;
+                font-size: 16px;
+                cursor: pointer;
+                position: relative;
+
+                @import "../components/loading";
+
+                &:hover {
+                    background-color: #704151;
+                }
+            }
+        }
+
+        .go-to-register-container {
+            font-size: 14px;
+            text-align: center;
+            font-weight: 600;
+        }
+    }
+}

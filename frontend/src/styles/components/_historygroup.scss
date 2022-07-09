@@ -1,0 +1,17 @@
+.history-group {
+
+    h3 {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    .history-list {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 20px;
+
+        @import "historycard";
+    }
+}
