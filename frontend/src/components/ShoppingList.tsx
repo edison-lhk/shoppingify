@@ -8,11 +8,21 @@ import { RootState, AppDispatch } from '../store';
 import { CartItems, getCartItems, setCartItems } from '../features/cart/cartSlice';
 import { toast } from 'react-toastify';
 import axios, { AxiosResponse, AxiosError } from 'axios';
+import { updateHistoryStatus } from '../features/history/historySlice';
 import Loading from './Loading';
 
-const ShoppingList = () => {
+type Prop = {
+    historyDetailsId?: string,
+    setHistoryDetailsViewMode?: React.Dispatch<React.SetStateAction<boolean>>,
+    historyDetailsEditMode?: boolean,
+    setHistoryDetailsEditMode?: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const ShoppingList = ({ historyDetailsId, setHistoryDetailsViewMode, historyDetailsEditMode, setHistoryDetailsEditMode }: Prop) => {
     const { cartItems, amount, isLoading } = useSelector((state: RootState) => state.cart);
+    console.log(amount);
     const user = useSelector((state: RootState) => state.user);
+    const history = useSelector((state: RootState) => state.history.shoppingLists.find(shoppingList => shoppingList.id === historyDetailsId));
 
     const dispatch = useDispatch<AppDispatch>();
 
@@ -37,6 +47,10 @@ const ShoppingList = () => {
     const { name, note, image, category } = formData;
 
     const [shoppingListName, setShoppingListName] = useState<string>('');
+
+    const [historyItemCategories, setHistoryItemCategories] = useState<string[]>([]);
+
+    const [openModalMode, setOpenModalMode] = useState<boolean>(false);
 
     const shoppingListRef = useRef<HTMLDivElement>(null);
     const categoryInputRef = useRef<HTMLDivElement>(null);
@@ -77,6 +91,12 @@ const ShoppingList = () => {
             setShoppingListName('');
         }
     }, [amount]);
+
+    useEffect(() => {
+        if (history) {
+            setHistoryItemCategories(Array.from(new Set(history.items.map(item => item.category))));
+        }
+    }, [history]);
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData(prevFormData => ({...prevFormData, [e.target.name]: e.target.value}));
@@ -151,7 +171,7 @@ const ShoppingList = () => {
                                 <button onClick={() => setAddNewItemMode(true)}>Add item</button>
                             </div>
                         </div>
-                        {amount > 0 ? (
+                        {!historyDetailsEditMode ? amount > 0 ? (
                             <div className="cart-item-groups-container">
                                 <header>
                                     <h2>Shopping List</h2>
@@ -160,19 +180,19 @@ const ShoppingList = () => {
                                 <div className="cart-item-groups">
                                     {isLoading ? <Loading border='5px' size='40px' color='#C1C1C4' /> : (
                                         <>
-                                            {fruitAndVegetables.length > 0 ? <CartItemGroup category='Fruit and Vegetables' items={fruitAndVegetables} /> : null}
-                                            {meat.length > 0 ? <CartItemGroup category="Meat" items={meat} /> : null}
-                                            {fishAndSeafood.length > 0 ? <CartItemGroup category="Fish and Seafood" items={fishAndSeafood} /> : null}
-                                            {dairy.length > 0 ? <CartItemGroup category="Dairy" items={dairy} /> : null}
-                                            {breadAndBakery.length > 0 ? <CartItemGroup category='Bread and Bakery' items={breadAndBakery} /> : null}
-                                            {frozenFoods.length > 0 ? <CartItemGroup category='Frozen Foods' items={frozenFoods} /> : null}
-                                            {pastaAndRiceAndCereal.length > 0 ? <CartItemGroup category='Pasta, Rice and Cereal' items={pastaAndRiceAndCereal} /> : null}
-                                            {cansAndJars.length > 0 ? <CartItemGroup category='Cans and Jars' items={cansAndJars} /> : null}
-                                            {sauces.length > 0 ? <CartItemGroup category="Sauces" items={sauces} /> : null}
-                                            {snacks.length > 0 ? <CartItemGroup category='Snacks' items={snacks} /> : null}
-                                            {beverages.length > 0 ? <CartItemGroup category="Beverages" items={beverages} /> : null}
-                                            {householdAndCleaning.length > 0 ? <CartItemGroup category='Household and Cleaning' items={householdAndCleaning} /> : null}
-                                            {personalCare.length > 0 ? <CartItemGroup category='Personal Care' items={personalCare} /> : null}
+                                            {fruitAndVegetables.length > 0 ? <CartItemGroup category='Fruit and Vegetables' items={fruitAndVegetables} historyDetailsEditMode={historyDetailsEditMode || false} /> : null}
+                                            {meat.length > 0 ? <CartItemGroup category="Meat" items={meat} historyDetailsEditMode={historyDetailsEditMode || false} /> : null}
+                                            {fishAndSeafood.length > 0 ? <CartItemGroup category="Fish and Seafood" items={fishAndSeafood} historyDetailsEditMode={historyDetailsEditMode || false} /> : null}
+                                            {dairy.length > 0 ? <CartItemGroup category="Dairy" items={dairy} historyDetailsEditMode={historyDetailsEditMode || false} /> : null}
+                                            {breadAndBakery.length > 0 ? <CartItemGroup category='Bread and Bakery' items={breadAndBakery} historyDetailsEditMode={historyDetailsEditMode || false} /> : null}
+                                            {frozenFoods.length > 0 ? <CartItemGroup category='Frozen Foods' items={frozenFoods} historyDetailsEditMode={historyDetailsEditMode || false} /> : null}
+                                            {pastaAndRiceAndCereal.length > 0 ? <CartItemGroup category='Pasta, Rice and Cereal' items={pastaAndRiceAndCereal} historyDetailsEditMode={historyDetailsEditMode || false} /> : null}
+                                            {cansAndJars.length > 0 ? <CartItemGroup category='Cans and Jars' items={cansAndJars} historyDetailsEditMode={historyDetailsEditMode || false} /> : null}
+                                            {sauces.length > 0 ? <CartItemGroup category="Sauces" items={sauces} historyDetailsEditMode={historyDetailsEditMode || false} /> : null}
+                                            {snacks.length > 0 ? <CartItemGroup category='Snacks' items={snacks} historyDetailsEditMode={historyDetailsEditMode || false} /> : null}
+                                            {beverages.length > 0 ? <CartItemGroup category="Beverages" items={beverages} historyDetailsEditMode={historyDetailsEditMode || false} /> : null}
+                                            {householdAndCleaning.length > 0 ? <CartItemGroup category='Household and Cleaning' items={householdAndCleaning} historyDetailsEditMode={historyDetailsEditMode || false} /> : null}
+                                            {personalCare.length > 0 ? <CartItemGroup category='Personal Care' items={personalCare} historyDetailsEditMode={historyDetailsEditMode || false} /> : null}
                                         </>
                                     ) }
                                 </div>
@@ -186,23 +206,63 @@ const ShoppingList = () => {
                                     </>
                                 ) }
                             </div>
+                        ) : (
+                            <div className="cart-item-groups-container">
+                                <header>
+                                    <h2>{history?.name}</h2>
+                                    <div className='edit-list-btn'><MdCreate size="20px" color='#C1C1C4' /></div>
+                                </header>
+                                <div className="cart-item-groups">
+                                    {historyItemCategories.map(historyItemCategory => <CartItemGroup key={historyItemCategory} category={historyItemCategory} items={history?.items.filter(item => item.category === historyItemCategory) || []} historyDetailsEditMode={historyDetailsEditMode || false} />)}
+                                </div>
+                            </div>
                         )}
                     </div>
-                    <div className="save-list-form-container">
-                        <form onSubmit={onSubmitShoppingList}>
-                            {amount > 0 ? (
-                                <div className="enter-list-name-bar">
-                                    <input type="text" name="name" id="name" placeholder='Enter a name' autoComplete='off' value={shoppingListName} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setShoppingListName(e.target.value)} />
-                                    <button type='submit'>Save</button>
+                    {!historyDetailsEditMode ? (
+                        <div className="save-list-form-container">
+                            <form onSubmit={onSubmitShoppingList}>
+                                {amount > 0 ? (
+                                    <div className="enter-list-name-bar">
+                                        <input type="text" name="name" id="name" placeholder='Enter a name' autoComplete='off' value={shoppingListName} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setShoppingListName(e.target.value)} />
+                                        <button type='submit'>Save</button>
+                                    </div>
+                                ) : (
+                                    <div className="enter-list-name-bar disabled">
+                                        <input type="text" name="name" id="name" placeholder='Enter a name' autoComplete='off' value={shoppingListName} disabled />
+                                        <button type='submit' disabled >Save</button>
+                                    </div>
+                                )}
+                            </form>
+                        </div>
+                    ): (
+                        <>
+                            <div className="button-container">
+                                <button className='cancel-btn' onClick={() => setOpenModalMode(true)}>cancel</button>
+                                <button className='complete-btn' type='submit' onClick={() => {
+                                    dispatch(updateHistoryStatus({ historyId: historyDetailsId || '', status: 'completed' }));
+                                    if (setHistoryDetailsViewMode) setHistoryDetailsViewMode(false);
+                                    if (setHistoryDetailsEditMode) setHistoryDetailsEditMode(false);
+                                }}>Complete</button>
+                            </div>
+                            {openModalMode ? (
+                                <div className="modal-container">
+                                    <div className="modal-box">
+                                        <p className='description'>Are you sure that you want to cancel this list?</p>
+                                        <div className="cancel-btn"><MdClear color='#828282' size='20px' onClick={() => setOpenModalMode(false)} /></div>
+                                        <div className="button-container">
+                                            <button className='cancel-btn' onClick={() => setOpenModalMode(false)} >cancel</button>
+                                            <button className="confirm-btn" onClick={() => {
+                                                setOpenModalMode(false);
+                                                dispatch(updateHistoryStatus({ historyId: historyDetailsId || '', status: 'cancelled' }));
+                                                if (setHistoryDetailsViewMode) setHistoryDetailsViewMode(false);
+                                                if (setHistoryDetailsEditMode) setHistoryDetailsEditMode(false);
+                                            }} >Yes</button>
+                                        </div>
+                                    </div>
                                 </div>
-                            ) : (
-                                <div className="enter-list-name-bar disabled">
-                                    <input type="text" name="name" id="name" placeholder='Enter a name' autoComplete='off' value={shoppingListName} disabled />
-                                    <button type='submit' disabled >Save</button>
-                                </div>
-                            )}
-                        </form>
-                    </div>
+                            ) : null}
+                        </>
+                    )}
                 </>
             ) : (
                 <div className="add-item-form-container">

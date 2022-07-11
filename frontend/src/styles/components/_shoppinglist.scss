@@ -174,6 +174,107 @@
         }
     }
 
+    .button-container {
+        height: 15vh;
+        background-color: $primary-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+
+        .cancel-btn {
+            all: unset;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 20px;
+            cursor: pointer;
+        }
+
+        .complete-btn {
+            border: none;
+            width: 118px;
+            height: 58.5px;
+            background-color: #56CCF2;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 20px;
+            color: $primary-color;
+            cursor: pointer;
+        }
+
+    }
+
+    .modal-container {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .modal-box {
+            position: relative;
+            width: 508.52px;
+            height: 219.39px;
+            background: $primary-color;
+            border-radius: 24px;
+            padding: 10px 30px;
+
+            .description {
+                font-weight: 500;
+                font-size: 22px;
+                line-height: 30px;
+                color: #34333A;
+                margin-top: 25px;
+                margin-bottom: 30px;
+                width: 80%;
+            }
+
+            .cancel-btn {
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                cursor: pointer;
+            }
+
+            .button-container {
+                display: flex;
+                justify-content: end;
+                align-items: center;
+                gap: 25px;
+                height: 70px;
+
+                button.cancel-btn {
+                    all: unset;
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 20px;
+                    cursor: pointer;
+                }
+    
+                button.confirm-btn {
+                    width: 87.35px;
+                    height: 61.25px;
+                    background: #EB5757;
+                    border-radius: 12px;
+                    font-weight: 700;
+                    font-size: 16px;
+                    line-height: 20px;
+                    color: $primary-color;
+                    border: none;
+                    border: 1px solid red;
+                    cursor: pointer;
+                }
+
+            }
+
+        }
+    }
+
     .add-item-form-container {
         height: 100vh;
         padding: 0 min(40px, 2.85vw);

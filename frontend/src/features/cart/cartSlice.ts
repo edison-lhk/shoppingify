@@ -21,7 +21,7 @@ export type CartItems = Array<{ id: string, name: string, category: string, imag
 const initialState: CartState = {
     cartItems: JSON.parse(localStorage.getItem('cartItems') as string) || [],
     amount: 0,
-    isLoading: true
+    isLoading: false
 };
 
 export const getCartItems = createAsyncThunk('cart/getCartItems', async(_, thunkAPI) => {

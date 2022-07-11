@@ -53,4 +53,29 @@ const getHistory = asyncHandler(async (req: express.Request, res: express.Respon
     res.status(200).json({ success: true, history: modifiedHistory });
 });
 
-export { addHistory, getHistory };
+const updateHistoryStatus = asyncHandler(async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+    const { userId, historyId } = req.params;
+    const { status } = req.body as { status: string };
+
+    if (status !== 'completed' && status !== 'cancelled') sendError(400, 'Status can only be completed or cancelled', next);
+
+    const user = await User.findById(userId);
+
+    if (!user) sendError(400, 'User does not exist', next);
+
+    const history = await History.findById(historyId);
+
+    if (!history) sendError(400, 'History does not exist', next);
+
+    if (history!.userId !== userId) sendError(401, 'Not authorized to edit this history', next);
+
+    if (history!.status !== 'active') sendError(400, 'This history is not active, you cannot change its status anymore', next);
+
+    history!.status = status;
+
+    await history!.save();
+
+    res.status(200).json({ success: true, message: 'History status has been successfully updated' });
+});
+
+export { addHistory, getHistory, updateHistoryStatus };

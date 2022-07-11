@@ -1,0 +1,75 @@
+.history-details-container {
+    overflow-y: scroll;
+    background-color: $section-bgcolor;
+    padding: 35px min(80px, 5vw) 60px min(80px, 5vw);
+    max-height: 100vh;
+    flex: 1;
+
+    @include screen-control(450px) {
+        width: calc(100vw - 62px);
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .go-back-btn-container {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+
+        .go-back-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        p {
+            color: $theme-color;
+        }
+    }
+
+    .history-description-container {
+        
+        .history-name {
+            font-weight: 700;
+            font-size: 26px;
+            line-height: 32px;
+            margin-bottom: 10px;
+        }
+
+        .history-date-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .date-icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .history-date {
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 15px;
+                color: #C1C1C4;
+            }
+
+        }
+
+    }
+
+    .history-item-groups-container {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        @import "historyitemgroup";
+    }
+
+}
+
+@import "itemdetails";

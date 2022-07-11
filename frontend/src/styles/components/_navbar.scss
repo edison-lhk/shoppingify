@@ -22,7 +22,7 @@ nav {
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        height: 25vh;
+        height: 35vh;
         width: 100%;
         padding: 10px 0;
 
@@ -67,13 +67,24 @@ nav {
                 height: 60px;
             }
         }
+
+        .logout.select {
+            &::before {
+                position: absolute;
+                content: '';
+                left: 0;
+                background-color: $theme-color;
+                width: 6px;
+                height: 60px;
+            }
+        }
     }
 
     .shopping-list-btn {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 30px;
+        margin-bottom: 40px;
         background-color: $theme-color;
         width: 42px;
         height: 42px;

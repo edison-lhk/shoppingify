@@ -30,13 +30,26 @@
 
         .history-group-container {
             margin-top: 40px;
+            margin-bottom: 60px;
             position: relative;
             min-height: 75vh;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+
+            .no-history {
+                position: absolute;
+                font-size: 20px;
+                font-weight: 700;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
 
             @import "../components/loading";
             @import "historygroup";
         }
     }
 
-    @import 'itemdetails';
+    @import 'historydetails';
 }

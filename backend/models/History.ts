@@ -28,7 +28,7 @@ const HistorySchema = new mongoose.Schema<HistoryType>({
     status: {
         type: String,
         required: [true, 'Please provide the status of the shopping list'],
-        enum: ['completed', 'cancelled']
+        enum: ['active', 'completed', 'cancelled']
     },
     createdAt: {
         type: Date,

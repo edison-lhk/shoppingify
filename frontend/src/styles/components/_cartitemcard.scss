@@ -4,9 +4,27 @@
     justify-content: space-between;
     align-items: center;
 
-    p {
-        font-size: 18px;
-        font-weight: 500;
+    .edit-completion-and-name-container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        .edit-completion-btn {
+            all: unset;
+            width: 22px;
+            height: 22px;
+            border: 2px solid #F9A109;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .item-name {
+            font-size: 18px;
+            font-weight: 500;
+        }
     }
 
     .edit-amount-bar {
