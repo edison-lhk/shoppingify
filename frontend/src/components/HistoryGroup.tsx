@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { RootState } from '../store';
 import HistoryCard from './HistoryCard';
 import { useSelector } from "react-redux";
-
+import { formatDate, formatDateCategory } from "../utils/date";
+ 
 type Prop = {
     category: string,
     setHistoryDetailsViewMode: React.Dispatch<React.SetStateAction<boolean>>,
@@ -15,22 +16,6 @@ const HistoryGroup = ({ category, setHistoryDetailsViewMode, setHistoryDetailsId
     const history = useSelector((state: RootState) => state.history);
 
     const [historyCardList, setHistoryCardList] = useState<{ id: string, name: string, items: { id: string, name: string, category: string, image?: string; note?: string, amount: number }[], status: string, createdAt: Date}[]>([]);
-
-    const formatDateCategory = (dateString: string) => {
-        const date = new Date(dateString);
-
-        const monthList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-        return `${monthList[date.getMonth()]} ${date.getFullYear()}`;
-    }
-
-    const formatDate = (dateString: string) => {
-        const date = new Date(dateString);
-
-        const weekList = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
-        return `${weekList[date.getDay()]} ${date.getDate() >= 10 ? date.getDate() : `0${date.getDate()}`}.${date.getMonth() + 1 >= 10 ? date.getMonth() + 1 : `0${date.getMonth() + 1}`}.${date.getFullYear()}`;
-    }
 
     useEffect(() => {
 

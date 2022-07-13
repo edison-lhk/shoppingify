@@ -224,10 +224,13 @@
                         display: flex;
                         flex-direction: column;
                         align-items: center;
+                        background-color: $primary-color;
                         gap: 5px;
                         padding: 5px 0;
                         margin-bottom: 3px;
                         visibility: hidden;
+                        position: relative;
+                        z-index: 2;
 
                         &::-webkit-scrollbar {
                             display: none;
@@ -261,6 +264,8 @@
                 display: flex;
                 align-items: center;
                 gap: 40px;
+                position: relative;
+                z-index: 1;
 
                 .cancel-btn {
                     all: unset;

@@ -1,0 +1,7 @@
+.stats-page-container {
+    display: flex;
+
+    @import "../components/navbar";
+    @import "../components/statisticssection";
+    @import "../components/shoppinglist";
+}

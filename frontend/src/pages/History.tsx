@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import NavBar from '../components/NavBar';
 import HistorySection from '../components/HistorySection';
 import ShoppingList from '../components/ShoppingList';
@@ -9,7 +9,6 @@ import { getHistory } from '../features/history/historySlice';
 import { calculateTotalAmount } from '../features/cart/cartSlice';
 
 const History = () => {
-    const history = useSelector((state: RootState) => state.history);
     const user = useSelector((state: RootState) => state.user);
     const cart = useSelector((state: RootState) => state.cart);
 
@@ -19,6 +18,8 @@ const History = () => {
     const [historyDetailsViewMode, setHistoryDetailsViewMode] = useState<boolean>(false);
     const [itemDetailsViewMode, setItemDetailsViewMode] = useState<boolean>(false);
     const [historyDetailsEditMode, setHistoryDetailsEditMode] = useState<boolean>(false);
+
+    const shoppingListRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         dispatch(getUser());
@@ -38,9 +39,9 @@ const History = () => {
 
     return (
       <div className='history-page-container'>
-          <NavBar />
+          <NavBar shoppingListRef={shoppingListRef} />
           <HistorySection historyDetailsId={historyDetailsId} setHistoryDetailsId={setHistoryDetailsId} historyDetailsViewMode={historyDetailsViewMode} setHistoryDetailsViewMode={setHistoryDetailsViewMode} itemDetailsViewMode={itemDetailsViewMode} setItemDetailsViewMode={setItemDetailsViewMode} setHistoryDetailsEditMode={setHistoryDetailsEditMode} />
-          {!itemDetailsViewMode ? <ShoppingList historyDetailsId={historyDetailsId} setHistoryDetailsViewMode={setHistoryDetailsViewMode} historyDetailsEditMode={historyDetailsEditMode} setHistoryDetailsEditMode={setHistoryDetailsEditMode} /> : null}
+          {!itemDetailsViewMode ? <ShoppingList historyDetailsId={historyDetailsId} setHistoryDetailsViewMode={setHistoryDetailsViewMode} historyDetailsEditMode={historyDetailsEditMode} setHistoryDetailsEditMode={setHistoryDetailsEditMode} shoppingListRef={shoppingListRef} /> : null}
       </div>
     );
 };

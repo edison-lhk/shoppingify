@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Items from './pages/Items';
 import History from './pages/History';
+import Statistics from './pages/Statistics';
 
 const App = (): JSX.Element => {
     return (
@@ -14,7 +15,7 @@ const App = (): JSX.Element => {
                     <Route path='/register' element={<Register />} />
                     <Route path='/dashboard/items' element={<Items />} />
                     <Route path='/dashboard/history' element={<History />} />
-                    <Route path='/dashboard/statistics' element={<Items />} />
+                    <Route path='/dashboard/statistics' element={<Statistics />} />
                 </Routes>
             </div>
         </Router>

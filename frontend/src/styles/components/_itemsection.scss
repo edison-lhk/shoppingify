@@ -7,6 +7,7 @@
         background-color: $section-bgcolor;
         padding: 0 min(80px, 5vw);
         max-height: 100vh;
+        min-width: 300px;
         flex: 1;
 
         @include screen-control(450px) {

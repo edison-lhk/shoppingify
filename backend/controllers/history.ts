@@ -12,7 +12,7 @@ const addHistory = asyncHandler(async (req: express.Request, res: express.Respon
         sendError(400, 'Please provide the name, items and userId for the shopping list', next);
     }
 
-    const history = new History({ name, items, userId, status: 'completed' });
+    const history = new History({ name, items, userId, status: 'active' });
 
     await history.save();
 

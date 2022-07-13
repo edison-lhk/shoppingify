@@ -15,12 +15,12 @@ type Prop = {
     historyDetailsId?: string,
     setHistoryDetailsViewMode?: React.Dispatch<React.SetStateAction<boolean>>,
     historyDetailsEditMode?: boolean,
-    setHistoryDetailsEditMode?: React.Dispatch<React.SetStateAction<boolean>>
+    setHistoryDetailsEditMode?: React.Dispatch<React.SetStateAction<boolean>>,
+    shoppingListRef: React.RefObject<HTMLDivElement>
 }
 
-const ShoppingList = ({ historyDetailsId, setHistoryDetailsViewMode, historyDetailsEditMode, setHistoryDetailsEditMode }: Prop) => {
+const ShoppingList = ({ historyDetailsId, setHistoryDetailsViewMode, historyDetailsEditMode, setHistoryDetailsEditMode, shoppingListRef }: Prop) => {
     const { cartItems, amount, isLoading } = useSelector((state: RootState) => state.cart);
-    console.log(amount);
     const user = useSelector((state: RootState) => state.user);
     const history = useSelector((state: RootState) => state.history.shoppingLists.find(shoppingList => shoppingList.id === historyDetailsId));
 
@@ -52,7 +52,6 @@ const ShoppingList = ({ historyDetailsId, setHistoryDetailsViewMode, historyDeta
 
     const [openModalMode, setOpenModalMode] = useState<boolean>(false);
 
-    const shoppingListRef = useRef<HTMLDivElement>(null);
     const categoryInputRef = useRef<HTMLDivElement>(null);
     const clearBtnRef = useRef<HTMLDivElement>(null);
     const categoryOptionsRef = useRef<HTMLDivElement>(null);
@@ -130,8 +129,6 @@ const ShoppingList = ({ historyDetailsId, setHistoryDetailsViewMode, historyDeta
         }
 
         const shoppingList = cartItems.filter(item => item.amount > 0).map(item => ({ id: item.id, amount: item.amount }));
-
-        console.log(shoppingList);
         
         try {
             const response: AxiosResponse = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/history`, { name: shoppingListName, items: shoppingList, userId: user.id }, { withCredentials: true });

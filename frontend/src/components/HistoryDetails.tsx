@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../store';
 import HistoryItemGroup from './HistoryItemGroup';
 import ItemDetails from './ItemDetails';
+import { formatDate } from "../utils/date";
 
 type Prop = {
     id: string,
@@ -20,14 +21,6 @@ const HistoryDetails = ({ id, setHistoryDetailsViewMode, setHistoryDetailsEditMo
     const [itemDetailsEditMode, setItemDetailsEditMode] = useState<boolean>(false);
 
     const [itemCategories, setItemCategories] = useState<string[]>([]);
-
-    const formatDate = (dateString: string) => {
-        const date = new Date(dateString);
-
-        const weekList = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
-        return `${weekList[date.getDay()]} ${date.getDate() >= 10 ? date.getDate() : `0${date.getDate()}`}.${date.getMonth() + 1 >= 10 ? date.getMonth() + 1 : `0${date.getMonth() + 1}`}.${date.getFullYear()}`;
-    }
 
     useEffect(() => {
         if (history && history.items.length > 0) {

@@ -4,6 +4,7 @@ import { RootState } from '../store';
 import HistoryDetails from './HistoryDetails';
 import HistoryGroup from './HistoryGroup';
 import Loading from './Loading';
+import { formatDateCategory } from "../utils/date";
 
 type Prop = {
     historyDetailsId: string,
@@ -19,14 +20,6 @@ const HistorySection = ({ historyDetailsId, setHistoryDetailsId , historyDetails
     const history = useSelector((state: RootState) => state.history);
 
     const [dateCategories, setDateCategories] = useState<string[]>([]);
-
-    const formatDateCategory = (dateString: string) => {
-        const date = new Date(dateString);
-
-        const monthList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-        return `${monthList[date.getMonth()]} ${date.getFullYear()}`;
-    }
 
     useEffect(() => {
 

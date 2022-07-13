@@ -16,7 +16,6 @@
     }
 
     .history-description-container {
-
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -27,6 +26,10 @@
             align-items: center;
             gap: 10px;
             padding: 0 10px;
+
+            @include screen-control(850px) {
+                display: none;
+            }
 
             .date-icon {
                 display: flex;
@@ -53,6 +56,10 @@
             font-size: 13px;
             line-height: 15px;
             color: #56CCF2;
+
+            @include screen-control(675px) {
+                display: none;
+            }
         }
 
         .go-to-history-details-btn {

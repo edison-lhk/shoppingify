@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import NavBar from "../components/NavBar";
 import ItemSection from "../components/ItemSection";
 import ShoppingList from "../components/ShoppingList";
@@ -15,6 +15,8 @@ const Items = (): JSX.Element => {
 
     const [itemDetailsViewMode, setItemDetailsViewMode] = useState<boolean>(false);
 
+    const shoppingListRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
         dispatch(getUser());
     }, []);
@@ -25,7 +27,7 @@ const Items = (): JSX.Element => {
             let cartItems = localStorage.getItem('cartItems');
             
             if (cartItems) {
-                cartItems = JSON.parse(cartItems);                
+                cartItems = JSON.parse(cartItems);  
 
                 if (cartItems!.length > 0) {
                     dispatch(setCartItems(cartItems));
@@ -45,9 +47,9 @@ const Items = (): JSX.Element => {
 
     return (
         <div className="items-page-container">
-            <NavBar />
+            <NavBar shoppingListRef={shoppingListRef} />
             <ItemSection itemDetailsViewMode={itemDetailsViewMode} setItemDetailsViewMode={setItemDetailsViewMode} />
-            {!itemDetailsViewMode ? <ShoppingList /> : null}
+            {!itemDetailsViewMode ? <ShoppingList shoppingListRef={shoppingListRef} /> : null}
         </div>
     );
 };

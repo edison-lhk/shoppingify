@@ -5,6 +5,18 @@
     width: 28vw;
     min-width: 300px;
 
+    @include screen-control(735px) {
+        position: fixed;
+        right: 0;
+        transform: translateX(100%);
+        transition: transform 0.45s;
+    }
+
+    @include screen-control(420px) {
+        width: calc(100vw - 62px);
+        min-width: calc(100vw - 62px);
+    }
+
     .shopping-list-container {
         padding: 0 min(50px, 3.6vw);
         overflow-x: hidden;
@@ -26,11 +38,23 @@
             gap: 10px;
             align-items: center;
 
+            @include screen-control(735px) {
+                width: 100%;
+            }
+
+            @include screen-control(420px) {
+                min-width: 100%;
+            }
+
             .add-item-logo {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 flex: 3;
+
+                @include screen-control(310px) {
+                    display: none;
+                }
 
                 img {
                     position: relative;
@@ -45,11 +69,20 @@
                 flex-direction: column;
                 justify-content: start;
                 height: 100%;
+
+                @include screen-control(310px) {
+                    justify-content: center;
+                    align-items: center;
+                }
                 
 
                 p {
                     color: $primary-color;
                     font-size: 16px;
+
+                    @include screen-control(310px) {
+                        text-align: center;
+                    }
                 }
 
                 button {
@@ -152,6 +185,10 @@
                     padding: 0 20px;
                     max-width: 180px;
                     width: 11vw;
+
+                    @include screen-control(805px) {
+                        width: 130px;
+                    }
 
                     &::placeholder {
                         color: #BDBDBD;
