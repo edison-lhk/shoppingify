@@ -12,6 +12,15 @@
     padding: 0 20px;
     cursor: pointer;
 
+    @include screen-control(400px) {
+        min-width: 130px;
+        padding: 0 10px;
+    }
+
+    @include screen-control(370px) {
+        min-width: 120px;
+    }
+
     .name {
         font-weight: 500;
         font-size: 16px;

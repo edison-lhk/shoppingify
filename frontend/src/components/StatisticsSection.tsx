@@ -45,7 +45,7 @@ const StatisticsSection = () => {
 
     return (
         <div className='stats-section'>
-            {history.isLoading ? <Loading border='6px' size='50px' color='#C1C1C4' /> : (
+            {history.isLoading ? <Loading border='6px' size='50px' color='#C1C1C4' /> : history.shoppingLists.length > 0 ? (
                 <>
                     <div className="stats-list-container">
                         <div className="top-items-container">
@@ -76,7 +76,7 @@ const StatisticsSection = () => {
                         </div>
                     </div>
                 </> 
-            )}
+            ) : <p className='no-stats'>No statistics yet</p>}
         </div>
     );
 };

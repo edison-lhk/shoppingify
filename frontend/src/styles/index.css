@@ -1681,6 +1681,9 @@ body {
   flex-direction: column;
   gap: 40px;
 }
+.container .history-page-container .history-section .history-details-container .history-item-groups-container .history-item-group-container {
+  border: 1px solid red;
+}
 .container .history-page-container .history-section .history-details-container .history-item-groups-container .history-item-group-container h3 {
   font-weight: 500;
   font-size: 18px;
@@ -1691,6 +1694,11 @@ body {
   flex-wrap: wrap;
   gap: 30px 20px;
   margin-top: 25px;
+}
+@media (max-width: 400px) {
+  .container .history-page-container .history-section .history-details-container .history-item-groups-container .history-item-group-container .item-list {
+    gap: 30px 10px;
+  }
 }
 .container .history-page-container .history-section .history-details-container .history-item-groups-container .history-item-group-container .item-list .history-item-card-container {
   background: #FFFFFF;
@@ -1705,6 +1713,17 @@ body {
   justify-content: space-between;
   padding: 0 20px;
   cursor: pointer;
+}
+@media (max-width: 400px) {
+  .container .history-page-container .history-section .history-details-container .history-item-groups-container .history-item-group-container .item-list .history-item-card-container {
+    min-width: 130px;
+    padding: 0 10px;
+  }
+}
+@media (max-width: 370px) {
+  .container .history-page-container .history-section .history-details-container .history-item-groups-container .history-item-group-container .item-list .history-item-card-container {
+    min-width: 120px;
+  }
 }
 .container .history-page-container .history-section .history-details-container .history-item-groups-container .history-item-group-container .item-list .history-item-card-container .name {
   font-weight: 500;
@@ -2914,6 +2933,14 @@ body {
   .container .stats-page-container .stats-section .month-summary-container .line-chart-container {
     width: 90%;
   }
+}
+.container .stats-page-container .stats-section .no-stats {
+  position: absolute;
+  font-size: 20px;
+  font-weight: 700;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .container .stats-page-container .shopping-list-section {
   background-color: #FFF0DE;
