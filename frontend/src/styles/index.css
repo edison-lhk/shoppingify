@@ -1681,9 +1681,6 @@ body {
   flex-direction: column;
   gap: 40px;
 }
-.container .history-page-container .history-section .history-details-container .history-item-groups-container .history-item-group-container {
-  border: 1px solid red;
-}
 .container .history-page-container .history-section .history-details-container .history-item-groups-container .history-item-group-container h3 {
   font-weight: 500;
   font-size: 18px;
