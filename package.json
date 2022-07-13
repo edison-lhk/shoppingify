@@ -7,7 +7,10 @@
   "scripts": {
     "frontend": "npm start --prefix frontend",
     "backend": "npm start --prefix backend",
-    "dev": "concurrently \"npm run frontend\" \"npm run backend\"" 
+    "dev": "concurrently \"npm run frontend\" \"npm run backend\"",
+    "heroku-prebuild": "npm install && npm install --prefix backend",
+    "heroku-postbuild": "npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "npm run backend"
   },
   "keywords": [],
   "license": "ISC",
