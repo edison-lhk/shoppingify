@@ -100,8 +100,8 @@ const NavBar = ({ shoppingListRef }: Prop): JSX.Element => {
                 historyRef.current?.classList.remove('select');
                 statsRef.current?.classList.remove('select');
                 localStorage.clear();
-                dispatch(logoutUser());
                 dispatch(getCartItems());
+                dispatch(logoutUser());
               }} >
                   <div className="nav-btn logout"><MdPowerSettingsNew size="23px" color="#454545" /></div>
                   <div className="tooltip logout">logout</div>
